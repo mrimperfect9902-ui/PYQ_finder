@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101b35">
+<title>UPSC PYQ Concept Finder</title>
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><div class="logo">PYQ</div><div><b>UPSC Concept Finder</b><small>Prelims question intelligence</small></div></div>
+  <button id="installBtn" class="outline hidden">Install app</button>
+</header>
+<main>
+  <section class="hero">
+    <p class="eyebrow">YOUR PERSONAL PYQ LIBRARY</p>
+    <h1>Find every question<br><span>behind a concept.</span></h1>
+    <p class="sub">Upload year-wise UPSC Prelims PDFs. Search a topic and trace the questions, years and concepts tested.</p>
+    <div class="stats">
+      <div><strong id="statQuestions">0</strong><small>Questions indexed</small></div>
+      <div><strong id="statPapers">0</strong><small>PDF papers</small></div>
+      <div><strong id="statYears">0</strong><small>Years covered</small></div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="section-head"><div><p class="eyebrow">01 / BUILD YOUR LIBRARY</p><h2>Upload Prelims papers</h2></div><span class="pill">PDF only</span></div>
+    <div id="dropzone" class="dropzone">
+      <div class="upload-icon">↑</div>
+      <b>Choose PDF files or drop them here</b>
+      <p>Upload one paper at a time or multiple year-wise PDFs.</p>
+      <input id="pdfInput" type="file" accept="application/pdf,.pdf" multiple hidden>
+      <button id="chooseBtn" class="primary">Select PDF files</button>
+    </div>
+    <div id="uploadStatus" class="status" aria-live="polite"></div>
+    <div class="hint">Tip: Name files clearly, e.g. <b>UPSC_Prelims_2024_GS1.pdf</b>. The year is detected from the filename; you can correct it after import.</div>
+    <div id="paperList" class="paper-list"></div>
+  </section>
+
+  <section class="panel search-panel">
+    <div class="section-head"><div><p class="eyebrow">02 / SEARCH BY IDEA</p><h2>Concept search</h2></div><span class="pill purple">Semantic-style matching</span></div>
+    <div class="searchbox"><span>⌕</span><input id="searchInput" placeholder="Try: Fundamental Rights, monsoon, inflation, Buddhism…" autocomplete="off"><button id="searchBtn" class="primary">Search</button></div>
+    <div class="filters">
+      <label>Subject <select id="subjectFilter"><option value="">All subjects</option><option>Polity</option><option>History</option><option>Geography</option><option>Economy</option><option>Environment</option><option>Science & Technology</option><option>Art & Culture</option><option>Other</option></select></label>
+      <label>Year from <input id="yearFrom" type="number" min="1900" max="2100" placeholder="2011"></label>
+      <label>Year to <input id="yearTo" type="number" min="1900" max="2100" placeholder="2026"></label>
+      <label>Match type <select id="matchFilter"><option value="all">All matches</option><option value="exact">Exact / keyword</option><option value="related">Related concepts</option></select></label>
+    </div>
+    <div id="resultsMeta" class="results-meta">Upload papers to begin searching your PYQ library.</div>
+    <div id="results" class="results"></div>
+  </section>
+
+  <section class="panel">
+    <div class="section-head"><div><p class="eyebrow">03 / MAINTAIN YOUR DATA</p><h2>Backup & data tools</h2></div></div>
+    <p class="muted">Your imported papers and extracted questions are stored in this browser on this device. Export a backup before changing devices or clearing browser data.</p>
+    <div class="tool-row">
+      <button id="exportBtn" class="outline">Export database backup</button>
+      <label class="outline file-label">Import backup<input id="importInput" type="file" accept="application/json,.json" hidden></label>
+      <button id="clearBtn" class="danger-outline">Delete all local data</button>
+    </div>
+    <div class="hint">PDF text extraction works best with selectable-text PDFs. Scanned/image-only papers need OCR; this first version flags papers where text extraction is empty or very limited.</div>
+  </section>
+  <footer>UPSC PYQ Concept Finder · Local-first prototype · Your data stays in this browser</footer>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="app.js"></script>
+</body></html>
